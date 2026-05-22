@@ -1,72 +1,51 @@
-# {{projectName}} — OpenCode Agent Rules
+# {{projectName}} — OpenCode Developer Guidelines
 
-> **This file is the authoritative system prompt for OpenCode agents working in this repository.**
-> Read this completely before writing a single line of code. Do not skip sections.
+This file is the primary system prompt instruction manual for OpenCode agents working inside this project. Read this thoroughly before analyzing code or proposing changes.
 
-**Project:** {{projectName}}
-**Developer:** {{projectAuthor}} (GitHub: [{{projectAuthor}}](https://github.com/{{projectGithub}}))
+---
+
+## 1. Project Specifications
+
+| Property | Value |
+| --- | --- |
+| **Project Name** | {{projectName}} |
+| **Developer** | {{projectAuthor}} |
+| **Github** | [{{projectGithub}}](https://github.com/{{projectGithub}}) |
 {{#projectUrl}}
-**Production:** {{projectUrl}}
+| **Production URL** | [{{projectUrl}}]({{projectUrl}}) |
 {{/projectUrl}}
-**AI Environment:** [OpenCode](https://opencode.ai) — configured via `opencode.json`
+| **Framework** | {{techFramework}} |
+| **Language** | {{techLanguage}} |
+| **Database** | {{techDatabase}} |
+| **Styling** | {{techStyling}} |
+| **Unit Test Framework** | {{techUnit}} |
+| **E2E Test Framework** | {{techE2e}} |
+| **Package Manager** | {{techPackageManager}} |
 
 ---
 
-## 1. Project Overview
+## 2. Dynamic Agent Hand-off and Selection
 
-{{projectDescription}}
-
-### Tech Stack
-
-| Layer          | Technology                                            |
-| -------------- | ----------------------------------------------------- |
-| Framework      | {{techFramework}}                                     |
-| Language       | {{techLanguage}}                                      |
-| Database       | {{techDatabase}}                                      |
-| Styling        | {{techStyling}}                                       |
-| Unit Testing   | {{techUnit}}                                          |
-| E2E Testing    | {{techE2e}}                                           |
-| Package Mgr    | {{techPackageManager}}                                |
-
----
-
-## 2. Non-Negotiable Rules
-
-{{rulesList}}
+This project defines specific agents configured in `opencode.json`. Refer to their dedicated system prompts for details:
+{{#agents.deploy}}
+- **@deploy**: Specializes in local builds, environment packaging, and server deployment.
+{{/agents.deploy}}
+{{#agents.qa}}
+- **@qa**: Focuses on test coverage execution, visual regression checkouts, and smoke testing.
+{{/agents.qa}}
+{{#agents.db}}
+- **@db**: Responsible for migrations, indexes, schemas, and query optimization.
+{{/agents.db}}
+{{#agents.plugin-dev}}
+- **@plugin-dev**: Creates modular features and scaffolds plugins/packages.
+{{/agents.plugin-dev}}
 
 ---
 
-## 3. OpenCode Configuration
+## 3. General Implementation Checklist
 
-This project uses **OpenCode** as the AI coding environment. Configuration is in `opencode.json`.
-
-### MCP Tools (from `opencode.json`)
-
-Standard Model Context Protocol servers are configured for this project. Proactively use them when applicable:
-- **filesystem**: Read and write files directly.
-- **sqlite** (if applicable): For querying the database `{{techDbFile}}`.
-- **sequential-thinking**: Break complex multi-step reasoning steps down.
-- **playwright** (if E2E is set): Run browser tests and capture screenshots.
-
----
-
-## 4. Testing Requirements
-
-### Commands
-
-| Command | Purpose |
-|---------|---------|
-{{#techUnit}}
-| `{{techPackageManager}} run test` | Run all unit tests |
-{{/techUnit}}
-{{#techE2e}}
-| `{{techPackageManager}} run test:e2e` | Run E2E tests |
-{{/techE2e}}
-
----
-
-## 5. Agent Behaviour Rules
-
-1. **Use `sequential-thinking` MCP** for complex multi-step tasks — plan before coding.
-2. **Never break passing tests.** If a change causes a test failure, fix it before continuing.
-3. **Log clearly.** Use appropriate logging for errors and warnings.
+When solving coding tasks, always structure your execution using this sequence:
+1. **Plan**: Run analytical checks and outline files to edit. Use `sequential-thinking` MCP to structure your execution plan.
+2. **Execute**: Modify target files or write new modules. Ensure proper encapsulation and follow the project design system.
+3. **Verify**: Run `run-tests` to ensure zero regressions.
+4. **Safety Verification**: Ensure no credentials, log directories, or secret tokens are left unstaged.

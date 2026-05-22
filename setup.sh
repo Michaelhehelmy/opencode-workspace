@@ -35,6 +35,7 @@ log "${GREEN}✅ Workspace dependencies installed${NC}"
 
 # ── 3. Render Templates ──────────────────────────────────────────────────────
 log "${YELLOW}⚙️  Generating project configuration and agent assets...${NC}"
+node lib/detect.js
 node lib/render.js
 
 # ── 4. Verify OpenCode installation ──────────────────────────────────────────
