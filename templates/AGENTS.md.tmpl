@@ -49,3 +49,16 @@ When solving coding tasks, always structure your execution using this sequence:
 2. **Execute**: Modify target files or write new modules. Ensure proper encapsulation and follow the project design system.
 3. **Verify**: Run `run-tests` to ensure zero regressions.
 4. **Safety Verification**: Ensure no credentials, log directories, or secret tokens are left unstaged.
+
+---
+
+## 4. Persistent Memory and Logbook (`AGENT_LOGBOOK.md`)
+
+This repository contains a file named `AGENT_LOGBOOK.md` in the project root.
+- **Rule**: You MUST read `AGENT_LOGBOOK.md` at the start of any work to check for recent changes or warnings left by previous agent sessions.
+- **Rule**: You MUST update the logbook when you finish a task, appending a log entry describing:
+  - Date
+  - Task done
+  - Files changed
+  - Learned lessons or codebase bugs/gotchas encountered during the task
+- **Rule**: If you discover a recurring codebase pattern, database locking issue, styling requirement, or gotcha, document it directly under the "Persistent Learnings & Codebase Gotchas" section in `AGENT_LOGBOOK.md`.
