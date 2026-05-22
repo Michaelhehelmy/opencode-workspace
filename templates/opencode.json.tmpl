@@ -25,7 +25,7 @@
     {{#mcps.playwright}}
     "playwright": {
       "type": "local",
-      "command": ["node", ".opencode/node_modules/@playwright/mcp/dist/cli.js"],
+      "command": ["node", ".opencode/node_modules/@playwright/mcp/cli.js"],
       "enabled": true
     },
     {{/mcps.playwright}}
@@ -120,6 +120,22 @@
     "tailwindcss": {
       "command": ["tailwindcss-language-server", "--stdio"],
       "extensions": [".ts", ".tsx", ".css"]
+    },
+    "json": {
+      "command": ["vscode-json-language-server", "--stdio"],
+      "extensions": [".json", ".jsonc"]
+    },
+    "html": {
+      "command": ["vscode-html-language-server", "--stdio"],
+      "extensions": [".html"]
+    },
+    "css": {
+      "command": ["vscode-css-language-server", "--stdio"],
+      "extensions": [".css"]
+    },
+    "markdown": {
+      "command": ["marksman", "server"],
+      "extensions": [".md"]
     }
   },
   "plugin": [
