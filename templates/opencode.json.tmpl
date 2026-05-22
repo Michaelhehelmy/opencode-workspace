@@ -85,6 +85,48 @@
       "enabled": true
     }
     {{/mcps.email}}
+    {{#mcps.git}}
+    "git": {
+      "type": "local",
+      "command": ["npx", "-y", "@cyanheads/git-mcp-server@latest"],
+      "enabled": true
+    },
+    {{/mcps.git}}
+    {{#mcps.fetch}}
+    "fetch": {
+      "type": "local",
+      "command": ["npx", "-y", "markfetch@latest"],
+      "enabled": true
+    },
+    {{/mcps.fetch}}
+    {{#mcps.docker}}
+    "docker": {
+      "type": "local",
+      "command": ["npx", "-y", "@thelord/mcp-server-docker-npx@latest"],
+      "enabled": true
+    },
+    {{/mcps.docker}}
+    {{#mcps.ripgrep}}
+    "ripgrep": {
+      "type": "local",
+      "command": ["npx", "-y", "ripgrep-mcp@latest"],
+      "enabled": true
+    },
+    {{/mcps.ripgrep}}
+    {{#mcps.everything}}
+    "everything": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-everything@latest"],
+      "enabled": true
+    },
+    {{/mcps.everything}}
+    {{#mcps.pdf}}
+    "pdf": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-pdf@latest"],
+      "enabled": true
+    }
+    {{/mcps.pdf}}
   },
   "agent": {
     {{#agents.deploy}}
