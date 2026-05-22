@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+package-lock.json
+bun.lock
+
+# Local template testing generated files
+opencode.json
+AGENTS.md
+.opencode/

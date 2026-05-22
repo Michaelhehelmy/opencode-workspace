@@ -1,0 +1,22 @@
+{
+  "name": "opencode-workspace",
+  "version": "1.0.0",
+  "description": "Universal OpenCode workspace template for developers",
+  "author": "Michael Helmy",
+  "private": true,
+  "dependencies": {
+    "mustache": "^4.2.0",
+    "@modelcontextprotocol/server-filesystem": "latest",
+    "@modelcontextprotocol/server-github": "latest",
+    "@modelcontextprotocol/server-sequential-thinking": "latest",
+    "@playwright/mcp": "latest",
+    "mcp-server-sqlite": "latest",
+    "tailwindcss-mcp": "latest",
+    "lucide-icons-mcp": "latest",
+    "next-devtools-mcp": "latest",
+    "@i18nexus/mcp": "latest"
+  },
+  "scripts": {
+    "render": "node lib/render.js"
+  }
+}

@@ -1,0 +1,18 @@
+# Non-Negotiable Safety Rules
+
+These rules apply to ALL agents in this workspace. Never violate them.
+
+## Database Safety
+- NEVER run destructive schema changes without explicit user confirmation.
+- ALWAYS use safe migrations when altering the database schema.
+{{#techDbFile}}
+- SQLite database is located at: `{{techDbFile}}`
+{{/techDbFile}}
+
+## Test Safety
+- NEVER skip a failing test — fix the root cause.
+- Run tests before marking any task complete to ensure zero regressions.
+
+## Commit Safety
+- NEVER commit secrets, API keys, credentials, or `.env` files.
+- Refer to `.gitignore` to see which paths should be kept clean of agent/test logs.
