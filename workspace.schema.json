@@ -51,7 +51,8 @@
         "deploy": { "type": "boolean" },
         "qa": { "type": "boolean" },
         "db": { "type": "boolean" },
-        "plugin-dev": { "type": "boolean" }
+        "plugin-dev": { "type": "boolean" },
+        "frontend": { "type": "boolean" }
       }
     },
     "rules": {

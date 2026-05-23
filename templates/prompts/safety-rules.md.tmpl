@@ -47,7 +47,26 @@ These rules are non-negotiable for all AI agents working in this repository.
 - **Idempotency**: All tests must be idempotent — they must produce the same result regardless of the order they are run or the number of executions.
 - **Zero Failures**: Never skip a failing test to pass validation. Always debug and fix the root cause.
 
-## 4. Git & Commit Rules
+## 4. Front-End, UX, and Dynamic Configuration Rules
+
+- **Authentication State Logic**:
+  - Always handle authentication state dynamically in the UI. If a user is logged in, hide all sign-in and registration actions. Instead, display their name, avatar, role, and a Sign Out button.
+  - Render appropriate role-specific navigation/dashboard links (e.g., master/admin dashboards vs client portals) depending on session data.
+  - Implement full loading/pending states during authentication verification to prevent UI flickers.
+- **Zero Hardcoded Data**:
+  - Do not hardcode page copy, pricing tiers, camp listings, site settings, or branding colors.
+  - All content and values must be editable/changeable from the frontend dashboard or custom settings interface.
+  - Configurable settings must be fetched from backend endpoints (e.g., SQLite DB or JSON config APIs).
+- **Backend API & Route Security**:
+  - Every setting modified on the frontend must have a corresponding, secure backend API route (Hono/Next.js routes) to save/load it.
+  - All backend endpoints updating configurations must have strict authentication/session checks and authorization checks (e.g., verify role is admin or owner/manager).
+  - Implement request validation (e.g., schema validation) on backend APIs to reject bad inputs and return clean JSON error payloads.
+  - Ensure tenant isolation: always check and scope settings queries/updates by tenant/site ID.
+- **Premium UX Standards**:
+  - Avoid simple MVPs. Use vibrant gradients, rounded borders, glassmorphism, responsive grids, and smooth CSS transitions/animations.
+  - Provide inline alerts, loading spinners (`Loader2`), disabled form states, and explicit success messages for all actions.
+
+## 5. Git & Commit Rules
 
 - **Secrets**: Never commit credentials, passwords, API tokens, `.env` files, or production configurations.
 - **Ignore List**: Ensure all temporary execution files, test results, logs, and coverage reports are ignored in `.gitignore`.

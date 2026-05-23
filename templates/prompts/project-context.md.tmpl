@@ -36,3 +36,12 @@ When creating or modifying files, follow the project convention:
 - **Hooks**: Custom logic hooks go to `src/hooks/` or `hooks/`.
 - **Database schemas/migrations**: Database-related configurations reside under `src/db/` or `db/`.
 - **E2E Tests**: Scenarios are located in the `e2e/` or `tests/` directories.
+
+---
+
+## 4. Dynamic Configuration & Auth Architecture
+
+To support the no-hardcoding requirement, the project leverages:
+- **Database Configuration Stores**: App settings, branding colors, listing attributes, and copy text reside in SQLite tables (e.g., tenant or property tables).
+- **Authentication State**: Handled using `authClient` (e.g., `authClient.useSession()` for React Client Components, and standard server actions/middleware checks for Server Components). Check `src/lib/auth-client.ts` or similar for implementation.
+- **API and CRUD Endpoints**: All UI settings are updated by triggering authenticated API endpoints (such as `POST /api/settings` or dynamic admin/owner endpoints). Verify validation is enforced and queries are properly scoped by tenant ID context.
